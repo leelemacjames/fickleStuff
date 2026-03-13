@@ -35,6 +35,7 @@
     --blue: #5b8fd4;
     --blue-dim: rgba(91, 143, 212, 0.12);
     --red: #c76a6a;
+    --green: #7fbf7f;
     --border: rgba(200, 205, 213, 0.08);
     --border-accent: rgba(212, 168, 83, 0.25);
     --serif: 'Cormorant Garamond', Georgia, serif;
@@ -44,7 +45,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -57,7 +57,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* --- Header --- */
   .hero {
     position: relative;
     padding: 6rem 2rem 4rem;
@@ -100,7 +99,7 @@
     font-style: italic;
     font-size: 1.15rem;
     color: var(--text-dim);
-    max-width: 520px;
+    max-width: 560px;
     margin: 0 auto 1.5rem;
     opacity: 0;
     animation: fadeUp 0.8s 0.6s forwards;
@@ -123,7 +122,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* --- Main content --- */
   main {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -158,7 +156,6 @@
   strong { color: var(--text-bright); font-weight: 600; }
   em { font-style: italic; color: var(--text-bright); }
 
-  /* Blockquotes */
   blockquote {
     position: relative;
     margin: 2rem 0;
@@ -182,13 +179,11 @@
     letter-spacing: 0.05em;
   }
 
-  /* Lists */
   ul, ol {
     margin: 1rem 0 1.3rem 1.5rem;
   }
   li { margin-bottom: 0.4rem; }
 
-  /* Code */
   code {
     font-family: var(--mono);
     font-size: 0.88em;
@@ -215,7 +210,6 @@
     color: inherit;
   }
 
-  /* KaTeX display */
   .katex-display {
     margin: 1.5rem 0;
     overflow-x: auto;
@@ -223,7 +217,6 @@
     padding: 0.5rem 0;
   }
 
-  /* Figures */
   figure {
     margin: 2.5rem 0;
     text-align: center;
@@ -241,7 +234,6 @@
     line-height: 1.5;
   }
 
-  /* YouTube embeds */
   .video-container {
     position: relative;
     width: 100%;
@@ -267,32 +259,51 @@
     margin-bottom: 1.5rem;
   }
 
-  /* Callout boxes */
-  .callout {
+  .callout, .reader-guide, .offramp, .advanced-note {
     margin: 2rem 0;
     padding: 1.2rem 1.5rem;
-    background: var(--accent-dim);
-    border: 1px solid var(--border-accent);
     border-radius: 6px;
     font-size: 0.95rem;
   }
-  .callout-title {
+
+  .callout {
+    background: var(--accent-dim);
+    border: 1px solid var(--border-accent);
+  }
+
+  .reader-guide {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+  }
+
+  .offramp {
+    background: rgba(127, 191, 127, 0.08);
+    border: 1px solid rgba(127, 191, 127, 0.25);
+  }
+
+  .advanced-note {
+    background: rgba(91, 143, 212, 0.10);
+    border: 1px solid rgba(91, 143, 212, 0.25);
+  }
+
+  .callout-title, .reader-guide-title, .offramp-title, .advanced-title {
     font-family: var(--mono);
     font-size: 0.72rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--accent);
     margin-bottom: 0.5rem;
   }
 
-  /* Divider */
+  .callout-title, .reader-guide-title { color: var(--accent); }
+  .offramp-title { color: var(--green); }
+  .advanced-title { color: var(--blue); }
+
   .divider {
     border: none;
     border-top: 1px solid var(--border);
     margin: 3rem 0;
   }
 
-  /* TOC */
   .toc {
     margin: 2rem 0 3rem;
     padding: 1.5rem 2rem;
@@ -332,7 +343,6 @@
   }
   .toc a:hover { color: var(--accent); text-decoration: none; }
 
-  /* OOP grid */
   .oop-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -369,7 +379,6 @@
   .oop-card li:last-child { border-bottom: none; }
   .oop-card li span.label { color: var(--text-dim); margin-right: 0.3rem; }
 
-  /* Footer */
   footer {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -392,7 +401,6 @@
 </head>
 <body>
 
-<!-- ============ HERO ============ -->
 <header class="hero">
   <div class="hero-label">McMurmerings — Epistemology</div>
   <h1>Fickle Stuff In Of Itself</h1>
@@ -400,455 +408,527 @@
   <div class="meta">Lee McCulloch-James &middot; 30 May 2019 &middot; <a href="https://mcmurmerings.wordpress.com/2019/05/30/fickle-stuff-in-of-itself/">Original blog</a></div>
 </header>
 
-<!-- ============ MAIN ============ -->
 <main>
 
-<!-- TOC -->
+<div class="reader-guide">
+  <div class="reader-guide-title">Reader guide</div>
+  <p>This essay is designed to be read at different depths.</p>
+  <ul>
+    <li><strong>Year 10:</strong> sections 1&ndash;4</li>
+    <li><strong>Year 11:</strong> continue to sections 5&ndash;7</li>
+    <li><strong>Diploma / IB / A-level:</strong> continue to sections 8&ndash;10</li>
+    <li><strong>First-year undergraduate:</strong> read the whole piece, including the final analogy</li>
+  </ul>
+</div>
+
 <nav class="toc">
   <div class="toc-title">Contents</div>
   <ol>
     <li><a href="#opening">The Snowflake Thought Experiment</a></li>
-    <li><a href="#properties">Immutable Properties or Behavioural Qualities</a></li>
-    <li><a href="#states">Towards States of Independence</a></li>
-    <li><a href="#microstates">Microstates and Boltzmann Entropy</a></li>
-    <li><a href="#canonical">Canonical Objections to Objectification</a></li>
-    <li><a href="#islands">Localised Islands of Tranquility</a></li>
-    <li><a href="#emerging">Emerging Structure and System Constraints</a></li>
-    <li><a href="#work">Working Against the Tidal Chaos</a></li>
-    <li><a href="#oop">Objects of Object-Oriented Programming</a></li>
+    <li><a href="#properties">Are properties fixed, or do things just behave differently?</a></li>
+    <li><a href="#questions">Same stuff, different questions</a></li>
+    <li><a href="#states">What do physicists mean by a state?</a></li>
+    <li><a href="#boiling">Boiling, evaporation, and why bubbles matter</a></li>
+    <li><a href="#bridge-micro">From what we see to what might be happening underneath</a></li>
+    <li><a href="#microstates">Microstates and Boltzmann entropy</a></li>
+    <li><a href="#islands">Why equilibrium can be local rather than perfect</a></li>
+    <li><a href="#emerging">Emerging structure and system constraints</a></li>
+    <li><a href="#work">Work, reversibility, and the pull toward disorder</a></li>
+    <li><a href="#canonical">Why measuring a system is never completely innocent</a></li>
+    <li><a href="#ensemble-bridge">Why physicists imagine many copies of one system</a></li>
+    <li><a href="#oop">A programming analogy: what is an object?</a></li>
+    <li><a href="#conclusion">Conclusion: from things to patterns of response</a></li>
     <li><a href="#references">References</a></li>
   </ol>
 </nav>
 
-<!-- §1 OPENING -->
 <section id="opening">
-<h2>The Snowflake Thought Experiment</h2>
+  <h2>The Snowflake Thought Experiment</h2>
 
-<blockquote>
-White flakes falling, I stretch out my arm, examine them, discovering they are merely drops of liquid water.
-<br><br>
-Now, instead I allow them to fall on a sheet of cold metal and observe a dusting of snow crystals, then on a sheet of ice the particles are cast as frozen.
-<br><br>
-A red hot plate later reveals them as hot spheres of liquid then a roaring fire claims them as puffs of steam.
-<span class="bq-attr">Adapted from H. Levy, <em>The Universe of Science</em></span>
-</blockquote>
+  <blockquote>
+    White flakes falling, I stretch out my arm, examine them, discovering they are merely drops of liquid water.
+    <br><br>
+    Now, instead I allow them to fall on a sheet of cold metal and observe a dusting of snow crystals, then on a sheet of ice the particles are cast as frozen.
+    <br><br>
+    A red hot plate later reveals them as hot spheres of liquid then a roaring fire claims them as puffs of steam.
+    <span class="bq-attr">Adapted from H. Levy, <em>The Universe of Science</em></span>
+  </blockquote>
 
-<p>What is the state of those white things <em>in themself</em>, those fickle entities of which I have variously probed and determined to be in many different states?</p>
+  <p>What is the state of those white things <em>in themselves</em>, those fickle entities of which I have variously probed and determined to be in many different states?</p>
 
-<!-- Diagram: Phase transitions of water -->
-<figure>
-<svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Phase transitions of water">
-  <defs>
-    <linearGradient id="iceGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#a8d8ea"/>
-      <stop offset="100%" stop-color="#5b8fd4"/>
-    </linearGradient>
-    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#4a90c4"/>
-      <stop offset="100%" stop-color="#2a5f8f"/>
-    </linearGradient>
-    <linearGradient id="steamGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#888"/>
-      <stop offset="100%" stop-color="#555"/>
-    </linearGradient>
-    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#d4a853" stroke-width="1.2"/>
-    </marker>
-  </defs>
-  <!-- Ice -->
-  <rect x="20" y="50" width="160" height="100" rx="8" fill="url(#iceGrad)" opacity="0.25" stroke="#5b8fd4" stroke-width="1"/>
-  <text x="100" y="90" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" fill="#a8d8ea" font-weight="600">Solid</text>
-  <text x="100" y="115" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7a8394">crystalline lattice</text>
-  <text x="100" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5b8fd4">T &lt; 273 K</text>
-  <!-- Arrow 1 -->
-  <line x1="190" y1="100" x2="240" y2="100" stroke="#d4a853" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="215" y="88" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#d4a853">melt</text>
-  <!-- Water -->
-  <rect x="250" y="50" width="160" height="100" rx="8" fill="url(#waterGrad)" opacity="0.25" stroke="#4a90c4" stroke-width="1"/>
-  <text x="330" y="90" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" fill="#7ab8e0" font-weight="600">Liquid</text>
-  <text x="330" y="115" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7a8394">disordered flow</text>
-  <text x="330" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5b8fd4">273 &lt; T &lt; 373 K</text>
-  <!-- Arrow 2 -->
-  <line x1="420" y1="100" x2="470" y2="100" stroke="#d4a853" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="445" y="88" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#d4a853">boil</text>
-  <!-- Steam -->
-  <rect x="480" y="50" width="170" height="100" rx="8" fill="url(#steamGrad)" opacity="0.18" stroke="#888" stroke-width="1"/>
-  <text x="565" y="90" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" fill="#aaa" font-weight="600">Gas</text>
-  <text x="565" y="115" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7a8394">free expansion</text>
-  <text x="565" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#888">T &gt; 373 K</text>
-  <!-- Bottom question -->
-  <text x="340" y="188" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="15" fill="#7a8394">What is the state of the stuff in of itself?</text>
-</svg>
-<figcaption>The same substance reveals different macroscopic states depending entirely on how we probe it.</figcaption>
-</figure>
+  <figure>
+    <svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Phase transitions of water">
+      <defs>
+        <linearGradient id="iceGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a8d8ea"/>
+          <stop offset="100%" stop-color="#5b8fd4"/>
+        </linearGradient>
+        <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4a90c4"/>
+          <stop offset="100%" stop-color="#2a5f8f"/>
+        </linearGradient>
+        <linearGradient id="steamGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#888"/>
+          <stop offset="100%" stop-color="#555"/>
+        </linearGradient>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6" fill="none" stroke="#d4a853" stroke-width="1.2"/>
+        </marker>
+      </defs>
+      <rect x="20" y="50" width="160" height="100" rx="8" fill="url(#iceGrad)" opacity="0.25" stroke="#5b8fd4" stroke-width="1"/>
+      <text x="100" y="90" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" fill="#a8d8ea" font-weight="600">Solid</text>
+      <text x="100" y="115" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7a8394">crystalline lattice</text>
+      <text x="100" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5b8fd4">T &lt; 273 K</text>
 
-<p>Whereas <em>properties</em> of stuff are characteristics presumed to be embodied indissolubly with the object itself, we might better ascribe the term <em>quality</em> for some regularity in behaviour.</p>
+      <line x1="190" y1="100" x2="240" y2="100" stroke="#d4a853" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <text x="215" y="88" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#d4a853">melt</text>
 
-<blockquote>
-Quality flirts with our senses while perennially shifting out of our consciousness. It leaves as quickly as it arrives, leaving only iridescence in its wake. The winking glitter is all we have to investigate its nature.
-<span class="bq-attr">E.H.C</span>
-</blockquote>
+      <rect x="250" y="50" width="160" height="100" rx="8" fill="url(#waterGrad)" opacity="0.25" stroke="#4a90c4" stroke-width="1"/>
+      <text x="330" y="90" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" fill="#7ab8e0" font-weight="600">Liquid</text>
+      <text x="330" y="115" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7a8394">disordered flow</text>
+      <text x="330" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5b8fd4">273 &lt; T &lt; 373 K</text>
 
-<p>The most obvious regularity in recent behaviour of a flake is its character of collective oneness, though this is ultimately transient. That its unit is illusory and non-immutable is not just a function of our mismeasurement.</p>
+      <line x1="420" y1="100" x2="470" y2="100" stroke="#d4a853" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <text x="445" y="88" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#d4a853">boil</text>
+
+      <rect x="480" y="50" width="170" height="100" rx="8" fill="url(#steamGrad)" opacity="0.18" stroke="#888" stroke-width="1"/>
+      <text x="565" y="90" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="20" fill="#aaa" font-weight="600">Gas</text>
+      <text x="565" y="115" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7a8394">free expansion</text>
+      <text x="565" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#888">T &gt; 373 K</text>
+
+      <text x="340" y="188" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="15" fill="#7a8394">What is the state of the stuff in of itself?</text>
+    </svg>
+    <figcaption>The same substance reveals different macroscopic states depending on how we encounter it.</figcaption>
+  </figure>
+
+  <p>The question seems innocent enough. Is water <em>really</em> a solid, a liquid, or a gas? Yet the answer appears to depend on the conditions under which it is examined. The same stuff is made to answer differently when temperature, pressure, or surface conditions are changed.</p>
+
+  <p>That is the beginning of the problem. Perhaps what we call a thing is not first revealed by what it <em>is</em>, but by how it <em>responds</em>.</p>
 </section>
 
 <hr class="divider">
 
-<!-- §2 PROPERTIES vs QUALITIES -->
 <section id="properties">
-<h2>Immutable Properties or Behavioural Qualities</h2>
+  <h2>Are properties fixed, or do things just behave differently?</h2>
 
-<blockquote>
-An ocean traveler has even more vividly the impression that the ocean is made of waves than that it is made of water.
-<span class="bq-attr">Arthur Eddington</span>
-</blockquote>
+  <blockquote>
+    An ocean traveler has even more vividly the impression that the ocean is made of waves than that it is made of water.
+    <span class="bq-attr">Arthur Eddington</span>
+  </blockquote>
 
-<p>Consider the potential redundancy of the word "property":</p>
+  <p>We often speak as though an object carries its properties around like labels stitched into its fabric. But many descriptions that sound like properties may be better understood as regular patterns of behaviour under changing conditions.</p>
 
-<ul>
-  <li>"Water has the property of being slippery when in solid form" can be more succinctly said as <em>water is slippery upon freezing</em>.</li>
-  <li>"Water has the material property that it enables longitudinal waves to propagate faster than if moving through air." Simply: <em>water enables sound waves to propagate faster than air.</em></li>
-  <li>"The ocean has both the properties of water and of waves." More directly: <em>the ocean behaves as both water and waves.</em></li>
-  <li>"Water has the property of being gas-like when heated up and solid-like when cooled." That is: <em>water behaves like a gas when heated and a solid when cooled.</em></li>
-</ul>
+  <ul>
+    <li>Instead of saying <em>water has the property of becoming slippery in frozen form</em>, we might say: <em>water becomes slippery when frozen</em>.</li>
+    <li>Instead of saying <em>water has the property of transmitting sound better than air</em>, we might say: <em>water allows sound to travel faster than air</em>.</li>
+    <li>Instead of saying <em>water has the property of being gas-like when heated and solid-like when cooled</em>, we might say: <em>water behaves like a gas when heated and like a solid when cooled</em>.</li>
+  </ul>
 
-<p>This highlights those aspects of an object's behaviour arising from changing conditions. If you have no transitions of states (and thus no verb with which to characterise behaviour), your purported observation through interaction with the object is null, given your mutual thermal and mechanical equilibrium.</p>
+  <p>This is not merely a change of wording. It shifts the focus from static labels to responses. Behaviour enters wherever conditions can vary.</p>
 
-<!-- YouTube: States of matter & phase transitions -->
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/pKvo0XWZtjo" title="States of matter and phase transitions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-</div>
-<div class="video-caption">Primer on phase transitions and states of matter.</div>
+  <blockquote>
+    Quality flirts with our senses while perennially shifting out of our consciousness. It leaves as quickly as it arrives, leaving only iridescence in its wake. The winking glitter is all we have to investigate its nature.
+    <span class="bq-attr">E.H.C</span>
+  </blockquote>
+
+  <p>If a thing is perfectly at equilibrium with us, and never changes under any probing, then there is very little to say. Observation begins where interaction begins, and interaction means change.</p>
 </section>
 
 <hr class="divider">
 
-<!-- §3 STATES OF INDEPENDENCE -->
+<section id="questions">
+  <h2>Same stuff, different questions</h2>
+
+  <p>Before introducing technical language, it helps to pause over something simple. A substance does not present all of itself at once. It presents one face when cooled, another when compressed, another when stirred, and another when heated.</p>
+
+  <p>So perhaps what we call a property is sometimes not a permanent label attached to a thing, but a regular answer to a regular question. Ask water what it does under cold conditions and it may answer with rigidity. Ask the same water what it does under heat and it answers with flow, then vapour.</p>
+
+  <p>The thing has not vanished; what has changed is the circumstance under which it is interrogated.</p>
+
+  <div class="callout">
+    <div class="callout-title">Key shift</div>
+    Many so-called properties may be better understood as <em>behaviours under conditions</em>.
+  </div>
+</section>
+
+<hr class="divider">
+
 <section id="states">
-<h2>Towards States of Independence</h2>
+  <h2>What do physicists mean by a state?</h2>
 
-<p>The macroscopic state of a fluid depends on the <em>constraint</em> value of one of its thermodynamic observables. Helium molecules are not strongly attracted to each other, so they must be cooled to 4 K before they will liquify. Liquefying by compression (work done by volume reduction) marks the molecular attraction of gas molecules.</p>
+  <p>In everyday speech, a state sounds like a label: solid, liquid, gas. In physics, it usually means something slightly more precise: a summary description of a system under particular constraints.</p>
 
-<p>The rate of evaporation of a liquid reflects the extent of the fluctuation of its internal energy: some molecules being less bound will have greater kinetic than their binding potential field energy. A boiling liquid vaporises even faster by deploying a secondary vehicle to eject its essence. Not only is there surface evaporation but there is also evaporation from internal bubbles. The vapour pressure within the bubbles must be sufficient for them to expand against the external pressure of the atmosphere.</p>
+  <p>The macroscopic state of a fluid depends on quantities such as temperature, pressure, and volume. These are not microscopic snapshots of every molecule. They are large-scale summaries that let us speak meaningfully about what the system is doing as a whole.</p>
 
-<div class="callout">
-  <div class="callout-title">Key idea</div>
-  The boiling point is the temperature at which the vapour pressure equals the atmospheric pressure. It is the internal evaporation of water vapour into bubbles, making them expand and rise to burst at the surface, that defines boiling as distinct from surface evaporation.
-</div>
+  <p>Helium molecules, for example, are only weakly attracted to one another, so helium must be cooled to about 4 K before it liquefies. Compression can also push gases toward liquefaction. In both cases, what matters is not a hidden mystical essence but the balance of constraints under which the molecules move.</p>
 
-<!-- YouTube: Boiling and vapour pressure -->
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/ffBusZO-TO0" title="Vapour pressure and the mechanism of boiling" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-</div>
-<div class="video-caption">Vapour pressure and the mechanism of boiling.</div>
+  <p>Already, then, a state is not a thing in isolation. It is a description of a system as it stands under a given set of conditions.</p>
+
+  <div class="offramp">
+    <div class="offramp-title">Off-ramp A</div>
+    <p>You can stop here and still keep the central philosophical idea: the same material may display different behaviours under different conditions, so some “properties” are better understood as context-sensitive qualities.</p>
+  </div>
 </section>
 
 <hr class="divider">
 
-<!-- §4 MICROSTATES -->
+<section id="boiling">
+  <h2>Boiling, evaporation, and why bubbles matter</h2>
+
+  <p>The rate of evaporation of a liquid reflects fluctuations in its internal energy. Some molecules, being less tightly bound than others, have enough kinetic energy to escape from the surface. That is ordinary evaporation.</p>
+
+  <p>Boiling is something more dramatic. It is not just surface escape. It also involves the formation of vapour bubbles inside the liquid. Those bubbles expand only when the vapour pressure within them is sufficient to overcome the surrounding external pressure.</p>
+
+  <div class="callout">
+    <div class="callout-title">Key idea</div>
+    The boiling point is the temperature at which the vapour pressure equals the atmospheric pressure. Boiling differs from simple evaporation because vapour forms not only at the surface but throughout the bulk of the liquid.
+  </div>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/ffBusZO-TO0" title="Vapour pressure and the mechanism of boiling" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="video-caption">Vapour pressure and the mechanism of boiling.</div>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/pKvo0XWZtjo" title="States of matter and phase transitions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="video-caption">Primer on phase transitions and states of matter.</div>
+</section>
+
+<hr class="divider">
+
+<section id="bridge-micro">
+  <h2>From what we see to what might be happening underneath</h2>
+
+  <p>So far we have spoken at the level of what can be seen: ice, water, steam, boiling, flow. Physics often asks a second question: what invisible arrangement could give rise to these visible behaviours?</p>
+
+  <p>A glass of water may look calm, yet at the microscopic level its molecules are jostling, colliding and exchanging energy. The visible state is therefore a summary of many unseen possibilities.</p>
+
+  <p>This is where a useful distinction enters:</p>
+
+  <ul>
+    <li><strong>Macrostate:</strong> the broad description we observe, such as temperature, pressure, or phase.</li>
+    <li><strong>Microstate:</strong> one particular detailed arrangement of all the particles.</li>
+  </ul>
+
+  <p>Once that distinction is made, entropy ceases to be a mysterious word and begins to look like a way of counting possibilities.</p>
+</section>
+
+<hr class="divider">
+
 <section id="microstates">
-<h2>Microstates and Boltzmann Entropy</h2>
+  <h2>Microstates and Boltzmann entropy</h2>
 
-<p><a href="http://people.physics.tamu.edu/kcolletti1/classes/fall15/stat_mech/84180007-Vol-5-Landau-Lifshitz-Statistical-Physics-Part-1.pdf">Landau and Lifshitz</a> defined the number of <strong>complexions</strong> as the number of ways $P$ in which $N = n_1 + n_2$ molecules can be divided into two groups $n_1$ and $n_2$:</p>
+  <p><a href="http://people.physics.tamu.edu/kcolletti1/classes/fall15/stat_mech/84180007-Vol-5-Landau-Lifshitz-Statistical-Physics-Part-1.pdf">Landau and Lifshitz</a> defined the number of <strong>complexions</strong> as the number of ways $P$ in which $N = n_1 + n_2$ molecules can be divided into two groups $n_1$ and $n_2$:</p>
 
-$$P = \frac{N!}{n_1!\, n_2!}$$
+  $$P = \frac{N!}{n_1!\, n_2!}$$
 
-<!-- Diagram: Two-chamber gas mixing -->
-<figure>
-<svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gas mixing after barrier removal">
-  <!-- Left: barrier present -->
-  <rect x="30" y="30" width="260" height="150" rx="6" fill="none" stroke="#5b8fd4" stroke-width="1.5"/>
-  <line x1="160" y1="30" x2="160" y2="180" stroke="#d4a853" stroke-width="2" stroke-dasharray="6,4"/>
-  <text x="160" y="20" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#d4a853">barrier</text>
-  <!-- particles left side -->
-  <circle cx="60" cy="75" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="90" cy="60" r="5" fill="#5b8fd4" opacity="0.7"/>
-  <circle cx="75" cy="110" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="110" cy="90" r="5" fill="#5b8fd4" opacity="0.7"/>
-  <circle cx="55" cy="145" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="130" cy="130" r="5" fill="#5b8fd4" opacity="0.7"/>
-  <circle cx="100" cy="155" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="140" cy="65" r="5" fill="#5b8fd4" opacity="0.7"/>
-  <!-- right side empty -->
-  <text x="225" y="110" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#7a8394">vacuum</text>
-  <text x="95" y="200" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#7a8394">n&#x2081; = N, n&#x2082; = 0</text>
+  <figure>
+    <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gas mixing after barrier removal">
+      <rect x="30" y="30" width="260" height="150" rx="6" fill="none" stroke="#5b8fd4" stroke-width="1.5"/>
+      <line x1="160" y1="30" x2="160" y2="180" stroke="#d4a853" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="160" y="20" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#d4a853">barrier</text>
 
-  <!-- Arrow -->
-  <text x="350" y="110" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" fill="#d4a853">&#x2192;</text>
-  <text x="350" y="135" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">remove barrier</text>
+      <circle cx="60" cy="75" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="90" cy="60" r="5" fill="#5b8fd4" opacity="0.7"/>
+      <circle cx="75" cy="110" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="110" cy="90" r="5" fill="#5b8fd4" opacity="0.7"/>
+      <circle cx="55" cy="145" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="130" cy="130" r="5" fill="#5b8fd4" opacity="0.7"/>
+      <circle cx="100" cy="155" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="140" cy="65" r="5" fill="#5b8fd4" opacity="0.7"/>
+      <text x="225" y="110" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#7a8394">vacuum</text>
+      <text x="95" y="200" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#7a8394">n&#x2081; = N, n&#x2082; = 0</text>
 
-  <!-- Right: mixed -->
-  <rect x="400" y="30" width="260" height="150" rx="6" fill="none" stroke="#5b8fd4" stroke-width="1.5"/>
-  <line x1="530" y1="30" x2="530" y2="180" stroke="#7a8394" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.4"/>
-  <!-- particles spread -->
-  <circle cx="430" cy="75" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="480" cy="145" r="5" fill="#5b8fd4" opacity="0.7"/>
-  <circle cx="450" cy="120" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="510" cy="70" r="5" fill="#5b8fd4" opacity="0.7"/>
-  <circle cx="550" cy="110" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="590" cy="60" r="5" fill="#5b8fd4" opacity="0.7"/>
-  <circle cx="570" cy="150" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="620" cy="100" r="5" fill="#5b8fd4" opacity="0.7"/>
-  <text x="530" y="200" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#7a8394">n&#x2081; = n&#x2082; = N/2 &#x2014; maximum P</text>
-</svg>
-<figcaption>Removing the barrier: asymmetry in the system is destroyed in time. The number of complexions P is maximised when n&#x2081; = n&#x2082; = N/2.</figcaption>
-</figure>
+      <text x="350" y="110" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" fill="#d4a853">&#x2192;</text>
+      <text x="350" y="135" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">remove barrier</text>
 
-<p>At equilibrium (over sufficiently long a time) $P$ is maximised when $n_1 = n_2 = N/2$. From this, Boltzmann defines entropy:</p>
+      <rect x="400" y="30" width="260" height="150" rx="6" fill="none" stroke="#5b8fd4" stroke-width="1.5"/>
+      <line x1="530" y1="30" x2="530" y2="180" stroke="#7a8394" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.4"/>
+      <circle cx="430" cy="75" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="480" cy="145" r="5" fill="#5b8fd4" opacity="0.7"/>
+      <circle cx="450" cy="120" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="510" cy="70" r="5" fill="#5b8fd4" opacity="0.7"/>
+      <circle cx="550" cy="110" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="590" cy="60" r="5" fill="#5b8fd4" opacity="0.7"/>
+      <circle cx="570" cy="150" r="5" fill="#5b8fd4" opacity="0.7"/><circle cx="620" cy="100" r="5" fill="#5b8fd4" opacity="0.7"/>
+      <text x="530" y="200" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#7a8394">n&#x2081; = n&#x2082; = N/2 &#x2014; maximum P</text>
+    </svg>
+    <figcaption>Removing the barrier destroys the asymmetry. The number of complexions is maximised when the particles are evenly distributed.</figcaption>
+  </figure>
 
-$$S = k \ln P$$
+  <p>At equilibrium, over sufficiently long a time, $P$ is maximised when $n_1 = n_2 = N/2$. Boltzmann then defines entropy by</p>
 
-<p>as a measure of increasing molecular disorder. Equipartition of energy and kinetic theory determine the average thermal energy carried by each microscopic degree of freedom:</p>
+  $$S = k \ln P$$
 
-$$\langle E \rangle = \tfrac{1}{2} k T$$
+  <p>Entropy here is not a misty metaphysical fog. It is a measure of how many microscopic arrangements are compatible with the macroscopic state we observe.</p>
 
-<p>for Boltzmann constant $k$ in units of entropy ($\text{J}\,\text{K}^{-1}$). For an ideal gas of $N$ particles in volume $V$, the complexion number per particle becomes:</p>
+  <p>Equipartition of energy and kinetic theory further tell us that the average thermal energy carried by each microscopic degree of freedom is</p>
 
-$$P^N = \frac{V}{N}\left(\frac{m k T}{2\pi\hbar^2}\right)^{3/2} e^{5/2}$$
+  $$\langle E \rangle = \tfrac{1}{2} k T$$
 
-<p>The initial conditions are forgotten en route to this devolved most probable state. Any initial lack of symmetry (more particles in the left than right) is always destroyed in time.</p>
+  <p>The broad lesson is clear: the system drifts toward macrostates that can be realised in the largest number of ways. Initial asymmetry is not impossible, merely fragile.</p>
 
-<div class="callout">
-  <div class="callout-title">Property vs Quality</div>
-  Only when an unchanging set of results from multiple observations (through time and space) is made, can a catalogue of behavioural characteristics be fixed as a <em>property</em> attributed to an object. If nothing can be fixed and nothing appears to be in of itself, the term <em>quality</em> is more apt.
-</div>
+  <div class="callout">
+    <div class="callout-title">Property versus quality, revisited</div>
+    Only when an unchanging set of results is produced again and again do we begin to catalogue stable behaviours as “properties”. Where nothing remains fixed except a pattern of response, the word <em>quality</em> may be the better fit.
+  </div>
 
-<!-- YouTube: Boltzmann entropy and microstates -->
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/4i1MUWJoI0U" title="Boltzmann entropy and microstates" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-</div>
-<div class="video-caption">Veritasium on entropy and the arrow of time.</div>
+  <div class="advanced-note">
+    <div class="advanced-title">Advanced note</div>
+    <p>For stronger readers, the full statistical-mechanical machinery goes much further than the simple counting argument above. But for the philosophical line of this essay, the key point is already present: a macrostate is a coarse summary over many microstates.</p>
+  </div>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/4i1MUWJoI0U" title="Boltzmann entropy and microstates" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="video-caption">Veritasium on entropy and the arrow of time.</div>
+
+  <div class="offramp">
+    <div class="offramp-title">Off-ramp B</div>
+    <p>You can stop here and keep the core physics idea: temperature, pressure and phase are large-scale summaries of many unseen particle arrangements, and entropy tracks how many such arrangements are available.</p>
+  </div>
 </section>
 
 <hr class="divider">
 
-<!-- §5 CANONICAL -->
-<section id="canonical">
-<h2>Canonical Objections to Objectification</h2>
-
-<p>To measure is to move from equilibrium: to expand some liquid metal linearly, say. That transfer of heat means that no matter how fine-grained our system's isolation, it is coarse-grained enough to be measurable. If an island ensemble of molecules is tranquil enough to be ascribed a temperature, its boundary must seal itself from the rest of the universe. Our probing to discern that measurement must then be adiabatic, which it never can be.</p>
-
-<blockquote>
-We indeed, rightly considering objects of sense as mere appearances, confess thereby that they are based upon a <strong>thing in itself</strong>, though we know not this thing as it is in itself, but only know its appearances, viz., the way in which our senses are affected by this unknown something.
-<span class="bq-attr">Immanuel Kant, <em>Prolegomena</em>, &#167;32</span>
-</blockquote>
-
-<p>Gibbs' imaginary "ensemble" assumes that thermodynamic experiments, unlike those of social science, do not suffer from a lack of repeatability. In statistical physics, at least on the enormous scale of micro-states, counterfactual scenarios are happily played out simultaneously. <a href="https://faculty.uca.edu/saddison/ThermalPhysics/CanonicalEnsemble.pdf">Gibbs' ensemble</a> is an imaginary set of such experimental replicants.</p>
-
-<!-- Diagram: Gibbs ensemble concept -->
-<figure>
-<svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gibbs canonical ensemble concept">
-  <!-- Heat bath -->
-  <rect x="40" y="20" width="600" height="220" rx="12" fill="none" stroke="#c76a6a" stroke-width="1" stroke-dasharray="8,4" opacity="0.5"/>
-  <text x="340" y="15" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#c76a6a" letter-spacing="0.1em">HEAT BATH (RESERVOIR) AT TEMPERATURE T</text>
-
-  <!-- Ensemble copies -->
-  <g>
-    <rect x="70" y="55" width="100" height="80" rx="5" fill="rgba(91,143,212,0.08)" stroke="#5b8fd4" stroke-width="1"/>
-    <circle cx="95" cy="85" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="115" cy="75" r="4" fill="#5b8fd4" opacity="0.6"/>
-    <circle cx="105" cy="100" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="140" cy="90" r="4" fill="#5b8fd4" opacity="0.6"/>
-    <text x="120" y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">copy 1</text>
-  </g>
-  <g>
-    <rect x="200" y="55" width="100" height="80" rx="5" fill="rgba(91,143,212,0.08)" stroke="#5b8fd4" stroke-width="1"/>
-    <circle cx="230" cy="80" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="250" cy="95" r="4" fill="#5b8fd4" opacity="0.6"/>
-    <circle cx="220" cy="105" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="270" cy="75" r="4" fill="#5b8fd4" opacity="0.6"/>
-    <text x="250" y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">copy 2</text>
-  </g>
-  <g>
-    <rect x="330" y="55" width="100" height="80" rx="5" fill="rgba(91,143,212,0.08)" stroke="#5b8fd4" stroke-width="1"/>
-    <circle cx="355" cy="90" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="380" cy="75" r="4" fill="#5b8fd4" opacity="0.6"/>
-    <circle cx="370" cy="110" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="400" cy="85" r="4" fill="#5b8fd4" opacity="0.6"/>
-    <text x="380" y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">copy 3</text>
-  </g>
-  <text x="470" y="95" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" fill="#7a8394">&#x22EF;</text>
-  <g>
-    <rect x="510" y="55" width="100" height="80" rx="5" fill="rgba(91,143,212,0.08)" stroke="#5b8fd4" stroke-width="1"/>
-    <circle cx="535" cy="80" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="560" cy="100" r="4" fill="#5b8fd4" opacity="0.6"/>
-    <circle cx="545" cy="70" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="580" cy="90" r="4" fill="#5b8fd4" opacity="0.6"/>
-    <text x="560" y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">copy N</text>
-  </g>
-
-  <!-- Ergodic annotation -->
-  <text x="340" y="185" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#d4a853">Ergodic assumption: time average over one system</text>
-  <text x="340" y="205" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#d4a853">= ensemble average over all copies</text>
-</svg>
-<figcaption>Gibbs' canonical ensemble: an imaginary collection of copies of the same system, each in a different microstate, all in thermal contact with a heat reservoir at temperature T. The ergodic hypothesis identifies the time-average of a single system with the ensemble average.</figcaption>
-</figure>
-
-<p>A theoretical probability of occurrence (say of a gas molecule found in the right compartment after opening a valve) is framed as an "experimental" probability whose population is a suitably chosen ensemble at a definite time. With an <strong>ergodic assumption</strong>, that a system is unconstrained to go to any state within an allowed energy band, the equilibrium distribution is independent of the initial microstate.</p>
-
-<p>Here we think of system constraints as some parameter held fixed, such as the charge on a capacitor or the volume of gas in a pump cylinder. Some thermodynamic observables are responses to particular constraints: the <em>pressure</em> is the system's response to a volume constraint, while voltage between capacitor plates is a response to charge on them. Other observables such as the refractive index impose boundary conditions that determine the transmission and reflection form of Maxwell's equations.</p>
-
-<p>We note the process of time averaging across a single system's fluctuation, then averaging across the ensemble, commutes with doing the averaging over an ensemble of systems then time-averaging over that. In equilibrium the (observable) fluctuation distribution and the ensemble distribution are identical.</p>
-</section>
-
-<hr class="divider">
-
-<!-- §6 ISLANDS -->
 <section id="islands">
-<h2>Localised Islands of Tranquility in Thermostatics</h2>
+  <h2>Why equilibrium can be local rather than perfect</h2>
 
-<p>Thermodynamics may be better termed <em>thermostatics</em>. Its elements are the ensemble of system states to which can be assigned macroscopic "state" variables such as temperature and pressure. Such state measures are representative of localised aggregates that within themselves are in equilibrium but between are in flux.</p>
+  <p>Thermodynamics might often be better called <em>thermostatics</em>. It gives us a language for describing systems that are stable enough, at some scale, to be assigned state variables such as temperature and pressure.</p>
 
-<p>These localised islands of tranquility are individually homogeneous enough to be fairly describable by a coarse-grained observable such as temperature. The temperature arises from the microscopic molecular kinetic energy of constituent "atoms" according to:</p>
+  <p>But such stability need not extend everywhere at once. It may be local. A system may contain little regions that are sufficiently uniform to be treated as temporary islands of equilibrium even while the larger whole remains in flux.</p>
 
-$$\tfrac{1}{2}m\overline{v^2} = \tfrac{3}{2}kT$$
+  <p>The temperature associated with one such localised region arises from the microscopic kinetic energy of its constituents:</p>
 
-<p>and can be inferred from the second, third and fourth moments (skewed right tail) of the Maxwell-Boltzmann distribution.</p>
+  $$\tfrac{1}{2}m\overline{v^2} = \tfrac{3}{2}kT$$
 
-<!-- Diagram: Maxwell-Boltzmann distribution sketch -->
-<figure>
-<svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maxwell-Boltzmann speed distribution at different temperatures">
-  <!-- Axes -->
-  <line x1="80" y1="250" x2="640" y2="250" stroke="#7a8394" stroke-width="1"/>
-  <line x1="80" y1="250" x2="80" y2="30" stroke="#7a8394" stroke-width="1"/>
-  <text x="360" y="285" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#7a8394">molecular speed v</text>
-  <text x="30" y="140" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#7a8394" transform="rotate(-90,30,140)">f(v)</text>
+  <p>That temperature is a coarse-grained summary. It is real and useful, but it does not abolish the microscopic motion underneath it.</p>
 
-  <!-- T1 low temperature (tall narrow peak) - smooth polyline -->
-  <polyline fill="none" stroke="#5b8fd4" stroke-width="2.2" stroke-linejoin="round"
-    points="80,250 90,250 100,249 110,248 120,246 130,242 140,235 150,223 160,205 170,180 180,148 190,112 200,78 210,55 220,50 230,62 240,85 250,114 260,146 270,174 280,197 290,214 300,226 310,234 320,239 330,242 340,244 350,246 360,247 370,248 380,248 400,249 420,249 450,250 500,250 560,250 640,250"/>
-  <text x="225" y="40" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5b8fd4">T&#x2081; (low)</text>
+  <figure>
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maxwell-Boltzmann speed distribution at different temperatures">
+      <line x1="80" y1="250" x2="640" y2="250" stroke="#7a8394" stroke-width="1"/>
+      <line x1="80" y1="250" x2="80" y2="30" stroke="#7a8394" stroke-width="1"/>
+      <text x="360" y="285" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#7a8394">molecular speed v</text>
+      <text x="30" y="140" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#7a8394" transform="rotate(-90,30,140)">f(v)</text>
 
-  <!-- T2 medium temperature - smooth polyline -->
-  <polyline fill="none" stroke="#d4a853" stroke-width="2.2" stroke-linejoin="round"
-    points="80,250 90,250 100,249 110,248 120,246 130,244 140,240 150,235 160,228 170,220 180,211 190,201 200,190 210,180 220,170 230,161 240,153 250,146 260,140 270,136 280,132 290,130 300,129 310,130 320,132 330,135 340,139 350,144 360,150 370,157 380,164 390,171 400,178 410,185 420,192 430,198 440,204 450,209 460,214 470,218 480,222 490,226 500,229 510,232 520,235 530,237 540,239 550,241 560,242 580,244 600,246 620,248 640,249"/>
-  <text x="305" y="118" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#d4a853">T&#x2082;</text>
+      <polyline fill="none" stroke="#5b8fd4" stroke-width="2.2" stroke-linejoin="round"
+        points="80,250 90,250 100,249 110,248 120,246 130,242 140,235 150,223 160,205 170,180 180,148 190,112 200,78 210,55 220,50 230,62 240,85 250,114 260,146 270,174 280,197 290,214 300,226 310,234 320,239 330,242 340,244 350,246 360,247 370,248 380,248 400,249 420,249 450,250 500,250 560,250 640,250"/>
+      <text x="225" y="40" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5b8fd4">T&#x2081; (low)</text>
 
-  <!-- T3 high temperature (broad low peak) - smooth polyline -->
-  <polyline fill="none" stroke="#c76a6a" stroke-width="2.2" stroke-linejoin="round"
-    points="80,250 90,250 100,249 110,249 120,248 130,247 140,246 150,244 160,242 170,240 180,237 190,234 200,231 210,228 220,225 230,222 240,219 250,216 260,214 270,211 280,209 290,207 300,205 310,203 320,202 330,200 340,199 350,198 360,198 370,197 380,197 390,198 400,198 410,199 420,200 430,201 440,202 450,204 460,206 470,208 480,210 490,212 500,214 510,216 520,218 530,220 540,222 550,224 560,226 580,230 600,234 620,238 640,241"/>
-  <text x="380" y="186" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#c76a6a">T&#x2083; (high)</text>
+      <polyline fill="none" stroke="#d4a853" stroke-width="2.2" stroke-linejoin="round"
+        points="80,250 90,250 100,249 110,248 120,246 130,244 140,240 150,235 160,228 170,220 180,211 190,201 200,190 210,180 220,170 230,161 240,153 250,146 260,140 270,136 280,132 290,130 300,129 310,130 320,132 330,135 340,139 350,144 360,150 370,157 380,164 390,171 400,178 410,185 420,192 430,198 440,204 450,209 460,214 470,218 480,222 490,226 500,229 510,232 520,235 530,237 540,239 550,241 560,242 580,244 600,246 620,248 640,249"/>
+      <text x="305" y="118" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#d4a853">T&#x2082;</text>
 
-  <!-- Annotation -->
-  <text x="500" y="70" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#7a8394">Higher T &#x2192; broader,</text>
-  <text x="500" y="88" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#7a8394">lower peak, right-skewed tail</text>
-</svg>
-<figcaption>Schematic Maxwell-Boltzmann speed distributions at three temperatures. The right skew encodes the higher moments from which macroscopic temperature can be inferred.</figcaption>
-</figure>
+      <polyline fill="none" stroke="#c76a6a" stroke-width="2.2" stroke-linejoin="round"
+        points="80,250 90,250 100,249 110,249 120,248 130,247 140,246 150,244 160,242 170,240 180,237 190,234 200,231 210,228 220,225 230,222 240,219 250,216 260,214 270,211 280,209 290,207 300,205 310,203 320,202 330,200 340,199 350,198 360,198 370,197 380,197 390,198 400,198 410,199 420,200 430,201 440,202 450,204 460,206 470,208 480,210 490,212 500,214 510,216 520,218 530,220 540,222 550,224 560,226 580,230 600,234 620,238 640,241"/>
+      <text x="380" y="186" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#c76a6a">T&#x2083; (high)</text>
 
-<p>Therein lies a conundrum. The static quality assigned at the particular scale of Observer A's coarse-grained view implies no equilibrium exists between neighbouring islands. If it did exist we would just merge the islands. The islands are then necessarily dynamically transitioning according to the Zeroth Law: in mutual contact, being at different temperatures.</p>
+      <text x="500" y="70" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#7a8394">Higher T &#x2192; broader,</text>
+      <text x="500" y="88" font-family="Cormorant Garamond, serif" font-style="italic" font-size="13" fill="#7a8394">lower peak, right-skewed tail</text>
+    </svg>
+    <figcaption>Schematic Maxwell-Boltzmann speed distributions at different temperatures.</figcaption>
+  </figure>
 
-<p>An Observer B, with a less coarse-grained (more refined) view of that same system, will infer more granular temperature variations drawn from sparser sampling distributions. What was previously deemed sets of equilibrium distribution for A could for B be representative sets in flux, dynamically moving towards localised equilibrium.</p>
+  <p>What one observer treats as a stable thermal region, another observer with finer resolution may treat as a set of smaller regions still moving toward equilibrium. Stability, then, is scale-dependent.</p>
 
-<p>Is this merely a semantic distortion of a truer fundamental statistical mechanical reality, or is it a convenient but artificial picture? The movement away from the reductionist preoccupation with <em>nouns of stuff</em> to <em>verbs of process</em> within complex dynamical systems would seem a step in the right direction.</p>
-
-<!-- YouTube: Prigogine and self-organisation -->
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/kuLX76g7Fec" title="Self-organisation and dissipative structures" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-</div>
-<div class="video-caption">Complexity and self-organisation far from equilibrium.</div>
+  <p>This does not make the language of thermodynamics false. It makes it coarse-grained, and therefore powerful.</p>
 </section>
 
 <hr class="divider">
 
-<!-- §7 EMERGING STRUCTURE -->
 <section id="emerging">
-<h2>Emerging Structure and System Constraints</h2>
+  <h2>Emerging structure and system constraints</h2>
 
-<p>We note in our various probing methods of the snowflake, its <em>equilibrium state</em>, its structural watery essence, never revealed itself as a state in ultimate isolation. Rather we observe its manifold of qualities or behaviours as it transitions between states.</p>
+  <p>Our various ways of probing the snowflake never uncover a final isolated essence. What we meet instead are states, transitions, and constraints. Yet this does not mean that the world is featureless. Quite the contrary: structure can emerge precisely because systems are constrained and driven.</p>
 
-<p>It was <a href="https://en.wikiquote.org/wiki/Ilya_Prigogine">Ilya Prigogine</a> who discovered that far-from-equilibrium systems actually exhibit creative self-organisation: internal structure. Quantum chaos occurs when quantum systems exhibit signature chaotic behaviour that results in organising structure at classical limits when $\hbar \rightarrow 0$. Systems whose equations of state are readily drawn up have constraining features that need not possess this emergent structuring.</p>
+  <p>It was <a href="https://en.wikiquote.org/wiki/Ilya_Prigogine">Ilya Prigogine</a> who emphasised that far-from-equilibrium systems can generate organised behaviour rather than merely descend into bland uniformity. Under suitable conditions, flows, gradients and exchanges with the surroundings permit self-organisation.</p>
 
-<p>As long as we can assign probabilities of its various microstates sufficiently accurately, a thermodynamic state may be designated even as the system is still moving towards equilibrium: a shard of glass may take thousands of years to move to its equilibrium crystalline structure.</p>
+  <p>Some systems are simple enough that their equations of state can be written down cleanly. Others develop vortices, patterns, instabilities and long-lived structures. A shard of glass, for example, may take thousands of years to approach its fully crystalline equilibrium. It is not frozen in perfection; it is trapped in an extraordinarily slow journey.</p>
 
-<div class="callout">
-  <div class="callout-title">Constraints and Degrees of Freedom</div>
-  <p>Randomisation is an efficient expunger of information: as a system approaches equilibrium all details (except for its energy content) of its starting constrained initial state are lost. At thermodynamic equilibrium the number of degrees of freedom equals the number of constraints plus one (implicitly defined by the equation of state).</p>
-</div>
+  <div class="callout">
+    <div class="callout-title">Constraints and freedom</div>
+    Randomisation is an efficient destroyer of detailed information. As a system approaches equilibrium, most traces of its constrained initial state are washed out. Yet away from equilibrium, constraints can also <em>generate</em> structure by forcing matter and energy into organised patterns.
+  </div>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/kuLX76g7Fec" title="Self-organisation and dissipative structures" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="video-caption">Complexity and self-organisation far from equilibrium.</div>
 </section>
 
 <hr class="divider">
 
-<!-- §8 WORKING AGAINST CHAOS -->
 <section id="work">
-<h2>Working Against the Tidal Chaos</h2>
+  <h2>Work, reversibility, and the pull toward disorder</h2>
 
-<p>Field energies are associated with the configuration of fields (densities) stored in space. A thermodynamic system possesses a definite internal energy which is the sum of particle (kinetic, rotational, inertial) and field energies. A black body containing thermal infrared radiation contains merely field energy.</p>
+  <p>Field energies are associated with the configuration of fields stored in space. A thermodynamic system possesses a definite internal energy which includes particle energies and field energies alike. A black body filled with thermal radiation contains field energy even without lumps of matter sloshing about inside it.</p>
 
-<p>In a dissipative process, which marks the moments of onset of turbulence such as the stirring of a viscous liquid, the work done is converted into energy of disorganised small-scale motions: not lost but neither directly recoverable. <em>Heat</em> is the word we use for energy thought of as randomised and free to move between systems. Changes that occur inside thermally isolated systems are adiabatic processes.</p>
+  <p>In a dissipative process, such as stirring a viscous liquid, work is converted into disorganised small-scale motion. The energy is not lost, but it becomes unrecoverable in any neat mechanical sense. Heat is the name we give to energy when it is randomised and available to flow between systems.</p>
 
-<h3>Reversibility and Constraint</h3>
+  <h3>Reversibility and constraint</h3>
 
-<p>Systems exert forces on constraints, so work is done and energy enters the system when a constraint is altered. A gas responds to the volume constraint by exerting a pressure $P$, and if the volume $V$ changes, the work done $dW$ on the gas by the walls of the container is:</p>
+  <p>Systems exert forces on constraints, so work is done when a constraint is altered. If a gas responds to the volume constraint by exerting a pressure $P$, then for a volume change $dV$ the work done on the gas is</p>
 
-$$dW = -P\,dV$$
+  $$dW = -P\,dV$$
 
-<p>Whereas dissipative work (such as driving an electric current through a resistor) is irreversible, a slow frictionless change of constraint involving laminar flow of fluid system(s) in contact with a heat reservoir does no net work. Pressure remains at equilibrium and constraints may be returned to their original value. Fast-moving constraints, such as a sudden compression, are both dissipative and irreversible because the impulse applied creates a pressure greater than equilibrium pressure.</p>
+  <p>Slow, frictionless changes can in principle be reversed. Sudden compressions cannot. Once turbulence, friction or resistive heating enters, the system remembers the violence of the intervention not as useful organised motion but as dispersed microscopic agitation.</p>
 
-<!-- YouTube: Reversible laminar flow demonstration -->
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/j2_dJY_mIys" title="Unmixing Colour Machine — Smarter Every Day 217" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-</div>
-<div class="video-caption">The famous laminar flow "un-mixing" demonstration. Dye between rotating cylinders appears to reverse, challenging our intuitions about Eddington's thermodynamic arrow of time.</div>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/j2_dJY_mIys" title="Unmixing Colour Machine — Smarter Every Day 217" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="video-caption">The laminar flow “un-mixing” demonstration. The reversal seems to challenge our intuitions about the arrow of time.</div>
 
-<p>This experiment in idealised form challenges our notion of Eddington's thermodynamic arrow of time. Penrose, in his <em>Cycles of Time</em>, cites such experiments as a source of pause and deliberation. We are but self-organising structures that have risen from a turbulent universe. Our notion of time is the enabler of behaviour and would point to <em>quality</em> trumping <em>property</em> in our description of all transient structures.</p>
+  <p>Such demonstrations force us to think carefully. Disorder is not merely visual mess. It concerns recoverability, reversibility and the number of microscopic ways a system may continue.</p>
+
+  <div class="offramp">
+    <div class="offramp-title">Off-ramp C</div>
+    <p>You can stop here and keep the full thermodynamic thread: stable descriptions arise from unstable microscopic motion, equilibrium is often local and approximate, and irreversibility is tied to the dispersal of organised energy into many microscopic degrees of freedom.</p>
+  </div>
 </section>
 
 <hr class="divider">
 
-<!-- §9 OOP -->
+<section id="canonical">
+  <h2>Why measuring a system is never completely innocent</h2>
+
+  <p>To measure is already to disturb. A thermometer works because heat flows. A pressure gauge works because a force is transmitted. Measurement is never the extraction of a pure property from a sealed essence. It is an interaction that moves a system, however slightly, away from isolation.</p>
+
+  <blockquote>
+    We indeed, rightly considering objects of sense as mere appearances, confess thereby that they are based upon a <strong>thing in itself</strong>, though we know not this thing as it is in itself, but only know its appearances, viz., the way in which our senses are affected by this unknown something.
+    <span class="bq-attr">Immanuel Kant, <em>Prolegomena</em>, &#167;32</span>
+  </blockquote>
+
+  <p>If an aggregate is tranquil enough to be assigned a temperature, then it must be sufficiently insulated from its surroundings to sustain that local identity. Yet our attempt to measure it necessarily breaches that tranquility. The coarser the system boundary, the easier the measurement; the finer the boundary, the less the system tolerates inspection.</p>
+
+  <p>This is not an embarrassment for science. It is a reminder that observables belong to relationships between system, apparatus and environment, not to a pure thing viewed from nowhere.</p>
+</section>
+
+<hr class="divider">
+
+<section id="ensemble-bridge">
+  <h2>Why physicists imagine many copies of one system</h2>
+
+  <p>Once we begin counting microstates, a practical problem appears. No real experiment can watch one system explore every allowed configuration over arbitrarily long times. Statistical physics therefore introduces an idealisation: the <em>ensemble</em>.</p>
+
+  <p>An ensemble is an imaginary collection of many copies of the same system, each in a different allowed microstate. The copies do not need to exist physically in the laboratory. Their purpose is conceptual. They allow us to calculate stable averages all at once.</p>
+
+  <p>What one real system might explore in time, the ensemble displays side by side in thought.</p>
+
+  <figure>
+    <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gibbs canonical ensemble concept">
+      <rect x="40" y="20" width="600" height="220" rx="12" fill="none" stroke="#c76a6a" stroke-width="1" stroke-dasharray="8,4" opacity="0.5"/>
+      <text x="340" y="15" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#c76a6a" letter-spacing="0.1em">HEAT BATH (RESERVOIR) AT TEMPERATURE T</text>
+
+      <g>
+        <rect x="70" y="55" width="100" height="80" rx="5" fill="rgba(91,143,212,0.08)" stroke="#5b8fd4" stroke-width="1"/>
+        <circle cx="95" cy="85" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="115" cy="75" r="4" fill="#5b8fd4" opacity="0.6"/>
+        <circle cx="105" cy="100" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="140" cy="90" r="4" fill="#5b8fd4" opacity="0.6"/>
+        <text x="120" y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">copy 1</text>
+      </g>
+      <g>
+        <rect x="200" y="55" width="100" height="80" rx="5" fill="rgba(91,143,212,0.08)" stroke="#5b8fd4" stroke-width="1"/>
+        <circle cx="230" cy="80" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="250" cy="95" r="4" fill="#5b8fd4" opacity="0.6"/>
+        <circle cx="220" cy="105" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="270" cy="75" r="4" fill="#5b8fd4" opacity="0.6"/>
+        <text x="250" y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">copy 2</text>
+      </g>
+      <g>
+        <rect x="330" y="55" width="100" height="80" rx="5" fill="rgba(91,143,212,0.08)" stroke="#5b8fd4" stroke-width="1"/>
+        <circle cx="355" cy="90" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="380" cy="75" r="4" fill="#5b8fd4" opacity="0.6"/>
+        <circle cx="370" cy="110" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="400" cy="85" r="4" fill="#5b8fd4" opacity="0.6"/>
+        <text x="380" y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">copy 3</text>
+      </g>
+      <text x="470" y="95" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="26" fill="#7a8394">&#x22EF;</text>
+      <g>
+        <rect x="510" y="55" width="100" height="80" rx="5" fill="rgba(91,143,212,0.08)" stroke="#5b8fd4" stroke-width="1"/>
+        <circle cx="535" cy="80" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="560" cy="100" r="4" fill="#5b8fd4" opacity="0.6"/>
+        <circle cx="545" cy="70" r="4" fill="#5b8fd4" opacity="0.6"/><circle cx="580" cy="90" r="4" fill="#5b8fd4" opacity="0.6"/>
+        <text x="560" y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7a8394">copy N</text>
+      </g>
+
+      <text x="340" y="185" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#d4a853">Ergodic assumption: time average over one system</text>
+      <text x="340" y="205" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#d4a853">= ensemble average over all copies</text>
+    </svg>
+    <figcaption>Gibbs’ canonical ensemble: an imaginary collection of copies of the same system, each in a different microstate, all in thermal contact with a reservoir at temperature T.</figcaption>
+  </figure>
+
+  <p>With the <strong>ergodic assumption</strong>, the time-average of one sufficiently unconstrained system is treated as equivalent to the ensemble average over many imagined copies. In equilibrium, the observable fluctuation distribution and the ensemble distribution coincide.</p>
+
+  <p>Here again the philosophical point returns: what we call an object is often something held together by the stability of a description, not by direct access to all of its microscopic detail.</p>
+</section>
+
+<hr class="divider">
+
 <section id="oop">
-<h2>Objects of Object-Oriented Programming</h2>
+  <h2>A programming analogy: what is an object?</h2>
 
-<p>An object for us is a self-contained entity embodied with all its characteristics in of itself. Its usage fixes ownership for a form of behaviour either onto the object or onto the environment or both, making it private and proprietary though we publicly agree to the tacit nature of the object's reality.</p>
+  <p>Object-oriented programming offers a suggestive analogy. In programming, an object is often treated as a self-contained entity endowed with attributes and methods. But even here, its meaning does not come from a hidden essence. It comes from what can be done with it and how it responds within an environment.</p>
 
-<p>Objects of Object-Oriented Programming are classified according to their attributes that render them syntactically sensitive to particular routines or methods.</p>
-
-<div class="oop-grid">
-  <div class="oop-card">
-    <h4>Attributes (data)</h4>
-    <ul>
-      <li><span class="label">speed:</span> float</li>
-      <li><span class="label">direction:</span> vector</li>
-      <li><span class="label">gear:</span> int</li>
-      <li><span class="label">colour:</span> str</li>
-    </ul>
+  <div class="oop-grid">
+    <div class="oop-card">
+      <h4>Attributes (data)</h4>
+      <ul>
+        <li><span class="label">speed:</span> float</li>
+        <li><span class="label">direction:</span> vector</li>
+        <li><span class="label">gear:</span> int</li>
+        <li><span class="label">colour:</span> str</li>
+      </ul>
+    </div>
+    <div class="oop-card">
+      <h4>Methods (behaviour)</h4>
+      <ul>
+        <li><span class="label">brake()</span> &#x2192; decelerate</li>
+        <li><span class="label">accelerate()</span> &#x2192; increase speed</li>
+        <li><span class="label">change_gear()</span> &#x2192; shift</li>
+        <li><span class="label">turn()</span> &#x2192; alter direction</li>
+      </ul>
+    </div>
   </div>
-  <div class="oop-card">
-    <h4>Methods (behaviour)</h4>
-    <ul>
-      <li><span class="label">brake()</span> &#x2192; decelerate</li>
-      <li><span class="label">accelerate()</span> &#x2192; increase speed</li>
-      <li><span class="label">change_gear()</span> &#x2192; shift</li>
-      <li><span class="label">turn()</span> &#x2192; alter direction</li>
-    </ul>
-  </div>
-</div>
 
-<p>The object carries with it wherever it goes and whenever it is these qualities, reacting in its individual way to the programming environment in which it is placed. In Python:</p>
+  <p>In Python, for example:</p>
 
-<pre><code><span style="color:#5b8fd4">class</span> <span style="color:#d4a853">Bicycle</span>:
+  <pre><code><span style="color:#5b8fd4">class</span> <span style="color:#d4a853">Bicycle</span>:
     <span style="color:#7a8394">"""A class is the blueprint template of an object,
     defined by its attributes and methods."""</span>
 
     <span style="color:#5b8fd4">def</span> <span style="color:#e8ecf2">__init__</span>(self, speed=<span style="color:#c76a6a">0</span>, gear=<span style="color:#c76a6a">1</span>):
-        self.speed = speed      <span style="color:#7a8394"># attribute: data</span>
+        self.speed = speed
         self.gear = gear
 
     <span style="color:#5b8fd4">def</span> <span style="color:#e8ecf2">accelerate</span>(self, increment):
-        <span style="color:#7a8394">"""method: the behaviour the object possesses"""</span>
         self.speed += increment
 
     <span style="color:#5b8fd4">def</span> <span style="color:#e8ecf2">brake</span>(self, decrement):
         self.speed = max(<span style="color:#c76a6a">0</span>, self.speed - decrement)
 
-<span style="color:#7a8394"># The object is an instance of its class</span>
 my_bike = Bicycle(speed=<span style="color:#c76a6a">12</span>, gear=<span style="color:#c76a6a">3</span>)
 my_bike.accelerate(<span style="color:#c76a6a">5</span>)
 print(my_bike.speed)  <span style="color:#7a8394"># 17</span></code></pre>
 
-<div class="callout">
-  <div class="callout-title">The Analogy</div>
-  <p>Just as thermodynamic "properties" are really behaviours in response to constraints and probing, OOP "attributes" are only meaningful when methods act upon them. The object has no essence independent of interaction.</p>
-</div>
+  <div class="callout">
+    <div class="callout-title">The analogy</div>
+    The object becomes intelligible through interaction. Its attributes matter because methods act upon them. In a similar way, thermodynamic “properties” often become meaningful only through the responses a system gives when it is constrained, measured or perturbed.
+  </div>
 </section>
 
 <hr class="divider">
 
-<!-- §10 REFERENCES -->
+<section id="conclusion">
+  <h2>Conclusion: from things to patterns of response</h2>
+
+  <p>The temptation is always to think that science reveals the hidden noun behind appearances: the complete thing in itself. But the path through thermodynamics suggests something subtler.</p>
+
+  <p>What becomes available to us first is not essence but response: how a system behaves under changed conditions, how structure appears under constraint, how order dissolves into probability, and how stable descriptions arise from restless underlying motion.</p>
+
+  <p>In that sense, science often begins not with substances but with transformations. The snowflake, the liquid, the vapour and the measured temperature are not rival realities. They are different windows onto a system whose identity is inseparable from the conditions under which it is probed.</p>
+
+  <p>Perhaps, then, <em>quality</em> sometimes outruns <em>property</em>. What we meet first is not the object stripped bare, but the pattern of its possible behaviours.</p>
+</section>
+
+<hr class="divider">
+
 <section id="references">
-<h2>References</h2>
-<p>J. Waldram, <em>The Theory of Thermodynamics</em>, Cambridge University Press, 1985.</p>
-<p>I. Prigogine, <em>From Being to Becoming</em>, Freeman and Company, 1980.</p>
-<p>L.D. Landau and E.M. Lifshitz, <em>Statistical Physics Part 1</em>, Course of Theoretical Physics Vol. 5.</p>
-<p>S.R. Addison, <a href="https://faculty.uca.edu/saddison/ThermalPhysics/CanonicalEnsemble.pdf">Canonical Ensemble</a>.</p>
-<p>H. Levy, <em>The Universe of Science</em>.</p>
-<p>R. Penrose, <em>Cycles of Time</em>, Vintage, 2011.</p>
-<p>I. Kant, <em>Prolegomena to Any Future Metaphysics</em>, &#167;32.</p>
+  <h2>References</h2>
+  <p>J. Waldram, <em>The Theory of Thermodynamics</em>, Cambridge University Press, 1985.</p>
+  <p>I. Prigogine, <em>From Being to Becoming</em>, Freeman and Company, 1980.</p>
+  <p>L.D. Landau and E.M. Lifshitz, <em>Statistical Physics Part 1</em>, Course of Theoretical Physics Vol. 5.</p>
+  <p>S.R. Addison, <a href="https://faculty.uca.edu/saddison/ThermalPhysics/CanonicalEnsemble.pdf">Canonical Ensemble</a>.</p>
+  <p>H. Levy, <em>The Universe of Science</em>.</p>
+  <p>R. Penrose, <em>Cycles of Time</em>, Vintage, 2011.</p>
+  <p>I. Kant, <em>Prolegomena to Any Future Metaphysics</em>, &#167;32.</p>
 </section>
 
 </main>
